@@ -12,6 +12,7 @@ export default function Properties(){
 
     const [property, setProperty] = useState([]);
     const [open, setOpen] = useState(false);
+    const [id, setId] = useState(null);
 
     useEffect(() => {
         try{
@@ -56,7 +57,10 @@ export default function Properties(){
                     <h1>Affordable Plots for Sale</h1>
                     {property.map(plot =>
                     <>
-                        <div className="available" key={plot.id} onClick={() => setOpen(true)}>
+                        <div className="available" key={plot.id} onClick={() => {
+                            setOpen(true)
+                            setId(plot.id)
+                        }}>
                             <div className="property-img">
                                 <img src={plot.thumbnail} alt="property-img" />
                             </div>
@@ -78,7 +82,7 @@ export default function Properties(){
                         </div>
 
                         <Modal open={open} onClose={() => setOpen(false)}>
-                            <ActuaProperty />
+                            <ActuaProperty pk={id} />
                         </Modal>
                     </>
                     )}
