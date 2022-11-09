@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import logo from './images/logo2.jpg';
+import logo from './images/logo.jpeg';
 import logo2 from './images/logo-footer.png';
+import twitter from './images/twitter.png';
+import facebook from './images/facebook.png';
 import property1 from './images/property1.jpg';
 import property2 from './images/property2.jpg';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -13,19 +15,20 @@ export default function Home(){
         <div className="container">
             <header>
                 <div className="head">
-                    <h1>To Own Property Call/Text/Whatsapp: +254 72 562 2968 </h1>
+                    <h1>To Own Property Call/Text/Whatsapp: +254 (707) 117 203 </h1>
                     <div className="email">
                         <EmailOutlinedIcon />
                         <h2 style={{paddingLeft: '10px'}}>info@greatfortunesproperties.com</h2>
                     </div>
                 </div>
                 <div className="navigation">
-                    <img src={logo} alt="logo" />
+                    <Link to="/"><img src={logo} alt="logo" /></Link>
                     <ul>
                         <Link to="/" style={{textDecoration: 'none', color: '#111'}}><li>Home</li></Link>
                         <Link to="/properties" style={{textDecoration: 'none', color: '#111'}}><li>Properties</li></Link>
-                        <li>Blog</li>
-                        <li>About Us</li>
+                        <li onClick={() => window.location.replace("https://greatfortunesproperties.com/blog/")}>Blog</li>
+                        <li onClick={() => window.location.replace("https://greatfortunesproperties.com/who-we-are/")}>About Us</li>
+                        <li onClick={() => window.location.replace("https://greatfortunesproperties.com/contact/")}>Contact</li>
                     </ul>
                 </div>
             </header>
@@ -49,7 +52,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className="explore">
-                        <button>Explore more</button>
+                        <Link to="/properties"><button>Explore more</button></Link>
                     </div>
                 </div>
 
@@ -113,8 +116,11 @@ export default function Home(){
                                     <EmailOutlinedIcon />
                                     <h5 style={{paddingLeft: '10px'}}>info@greatfortunesproperties.com</h5>
                                 </li>
+                                <li>
+                                    <a href="https://twitter.com/greatfortunes1"><img src={twitter} alt="twitter" /></a>
+                                    <a href="https://www.facebook.com/profile.php?id=100086559135760"><img src={facebook} alt="facebook" /></a>
+                                </li>
                             </ul>
-                            <ol></ol>
                         </div>
 
                         <div className="footer-bottom">
