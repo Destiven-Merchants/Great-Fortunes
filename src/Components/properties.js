@@ -48,9 +48,9 @@ export default function Properties(){
                     <ul>
                         <Link to="/" style={{textDecoration: 'none', color: '#111'}}><li>Home</li></Link>
                         <Link to="/properties" style={{textDecoration: 'none', color: '#111'}}><li>Properties</li></Link>
-                        <li onClick={() => window.location.replace("https://greatfortunesproperties.com/blog/")}>Blog</li>
-                        <li onClick={() => window.location.replace("https://greatfortunesproperties.com/who-we-are/")}>About Us</li>
-                        <li onClick={() => window.location.replace("https://greatfortunesproperties.com/contact/")}>Contact</li>
+                        <Link to="/blog" style={{textDecoration: 'none', color: '#111'}}><li>Blog</li></Link>
+                        <Link to="/about" style={{textDecoration: 'none', color: '#111'}}><li>About</li></Link>
+                        <Link to="/contact" style={{textDecoration: 'none', color: '#111'}}><li>Contact Us</li></Link>
                     </ul>
                 </div>
             </header>

@@ -2,15 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from './images/logo.jpeg';
 import logo2 from './images/logo-footer.png';
-import twitter from './images/twitter.png';
-import facebook from './images/facebook.png';
-import property1 from './images/property1.jpg';
-import property2 from './images/property2.jpg';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import twitter from './images/twitter.png';
+import facebook from './images/facebook.png';
 
-export default function Home(){
+export default function Contact() {
     return (
         <div className="container">
             <header>
@@ -34,68 +32,46 @@ export default function Home(){
             </header>
 
             <section>
-                <div className="hero-container">
-                    <h1>Start Your Investment Journey with Us.</h1>
-                    <h2>Featured properties</h2>
-                    <div className="properties">
-                        <div className="property">
-                            <img src={property1} alt="property1" />
-                            <h5>Plots in Nanyuki</h5>
-                        </div>
-                        <div className="property">
-                            <img src={property2} alt="property2" />
-                            <h5>Plots in Kiambu</h5>
-                        </div>
-                        <div className="property">
-                            <img src={property1} alt="property3" />
-                            <h5>Plots in Nakuru</h5>
-                        </div>
+                <div className='contact' id='contact'>
+                <form>
+                    <h1>Get In Touch</h1>
+                    <div className='contact-first'>
+                        <input type='text' placeholder='Name' required />
+                        <input type='email' placeholder='Your Email' required />
                     </div>
-                    <div className="explore">
-                        <Link to="/properties"><button>Explore more</button></Link>
+                    <div className='message'>
+                        <textarea placeholder='Your Message' required></textarea>
                     </div>
-                </div>
-
-                <div className="about-container">
-                    <div className="about-content">
-                        <ol>
-                            <li>Over 10 years of experience. Great Fortunes Properties is a leading brand in the African real estate sector.</li>
-                            <li>Genuine Titles Deeds. We have prime plots on sale in Kiambu, Thika, Gatanga Road, Machakos, Kitengela, Nyeri.</li>
-                            <li>Property Transformation. The Real Estate arm’s flagship product is transformed value added plots which are particularly enhanced to suit immediate residential settlement, commercial purposes and futuristic.</li>
-                            <li>Our prices are very affordable starting from Kshs. 199,000 only.</li>
-                            <li>Our prices are inclusive of title processing fees and legal fees, no hidden charges.</li>
-                            <li>Title deed delivery – we do all the paperwork for you and deliver title deeds within 6 – 12 months upon completion of payment.</li>
-                            <li>We offer a flexible installment payment plan of up to 12 months.</li>
-                        </ol>
-                    </div>
-                    <div className="about-img">
-                        <img src={property1} alt='property' />
-                    </div>
-                </div>
-
-                <div className="cta-container">
-                    <h1>Current Statistics</h1>
+                    <input type='submit' value='SEND' />
+                </form>
+                <div className='contact__dets'>
                     <ul>
                         <li>
-                            <h4>10</h4>
-                            <p>Years of Experience</p>
+                            <LocationOnOutlinedIcon />
+                            <div className='dets'>
+                                <h3>Address</h3>    
+                                <p>Avenue 2 Kenyatta Rd (Off-Thika Rd)</p>
+                            </div>
                         </li>
                         <li>
-                            <h4>20</h4>
-                            <p>Projects</p>
+                            <LocalPhoneOutlinedIcon />
+                            <div className='dets'>
+                                <h3>Call us</h3>
+                                <p>(254) 715-657-003</p>
+                            </div>
                         </li>
                         <li>
-                            <h4>10,000</h4>
-                            <p>Happy CLients</p>
-                        </li>
-                        <li>
-                            <h4>1000</h4>
-                            <p>Title Deeds Awarded</p>
+                            <EmailOutlinedIcon />
+                            <div className='dets'>
+                                <h3>stephen@destivenmerchants.com</h3>
+                                <p>Send us your query anytime!</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
+            </div>
 
-                <div className="footer-container">
+            <div className="footer-container">
                     <div className="footer-content">
                         <div className="footer-top">
                             <img src={logo2} alt='logo' />
