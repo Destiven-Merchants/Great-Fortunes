@@ -8,7 +8,7 @@ export default function ActualProperty({pk}) {
 
     useEffect(() => {
         async function fetchData(){
-            const data = await fetch(`http://127.0.0.1:8000/property/${pk}`, {
+            const data = await fetch(`https://greatfortunesproperties.herokuapp.com/property/${pk}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             })
@@ -18,7 +18,7 @@ export default function ActualProperty({pk}) {
         }
 
         async function fetchImages(){
-            const images = await fetch(`http://127.0.0.1:8000/propertyimages/${pk}`, {
+            const images = await fetch(`https://greatfortunesproperties.herokuapp.com/propertyimages/${pk}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             })
@@ -42,7 +42,7 @@ export default function ActualProperty({pk}) {
             {actualProperty.map(property => 
                 <div className="actualproperty" key={property.id}>
                     <div className="actualproperty-img">
-                        <img src={`http://127.0.0.1:8000${curImage}`} alt="property" />
+                        <img src={`https://greatfortunesproperties.herokuapp.com${curImage}`} alt="property" />
                     </div>
 
                     <div className="actualproperty-content">
@@ -65,7 +65,7 @@ export default function ActualProperty({pk}) {
 
             <div className="review-images">
                 {images.map(image => 
-                    <img src={`http://127.0.0.1:8000${image.images}`} alt="review properties" onClick={() => setCurImage(image.images)} />
+                    <img src={`https://greatfortunesproperties.herokuapp.com${image.images}`} alt="review properties" onClick={() => setCurImage(image.images)} />
                 )}
             </div>
         </div>

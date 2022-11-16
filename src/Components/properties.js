@@ -18,7 +18,7 @@ export default function Properties(){
 
     useEffect(() => {
         try{
-            fetch('http://127.0.0.1:8000/property',{
+            fetch('https://greatfortunesproperties.herokuapp.com/property',{
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             }).then(

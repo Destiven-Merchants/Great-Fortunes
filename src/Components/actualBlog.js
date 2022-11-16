@@ -10,7 +10,7 @@ export default function ActualBlog(){
         const slug = field[2]
 
         async function getPost(){
-            const data = await fetch(`http://127.0.0.1:8000/blogpost/${slug}`, {
+            const data = await fetch(`https://greatfortunesproperties.herokuapp.com/blogpost/${slug}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             });
@@ -26,7 +26,7 @@ export default function ActualBlog(){
             {post.map((blog, index) => 
                 <div className="blogpost" key={index}>
                     <h1>{blog.title}</h1>
-                    <img src={`http://127.0.0.1:8000${blog.thumbnail}`} alt="blog" />
+                    <img src={blog.thumbnail} alt="blog" />
                     <div className="blogpost-content">
                         <p dangerouslySetInnerHTML={{ __html: blog.content}} />
                     </div>

@@ -14,7 +14,7 @@ export default function Blog() {
 
     useEffect(() => {
         async function getBlogs(){
-            const data = await fetch('http://127.0.0.1:8000/blogs', {
+            const data = await fetch('https://greatfortunesproperties.herokuapp.com/blogs', {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             })
