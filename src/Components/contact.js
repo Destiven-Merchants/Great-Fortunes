@@ -50,20 +50,20 @@ export default function Contact() {
                             <LocationOnOutlinedIcon />
                             <div className='dets'>
                                 <h3>Address</h3>    
-                                <p>Avenue 2 Kenyatta Rd (Off-Thika Rd)</p>
+                                <p>Assumption Center CDN 4th Floor, along Moi road</p>
                             </div>
                         </li>
                         <li>
                             <LocalPhoneOutlinedIcon />
                             <div className='dets'>
                                 <h3>Call us</h3>
-                                <p>(254) 715-657-003</p>
+                                <p>+254 (707) 117 203</p>
                             </div>
                         </li>
                         <li>
                             <EmailOutlinedIcon />
                             <div className='dets'>
-                                <h3>stephen@destivenmerchants.com</h3>
+                                <h3>info@greatfortunesproperties.com</h3>
                                 <p>Send us your query anytime!</p>
                             </div>
                         </li>

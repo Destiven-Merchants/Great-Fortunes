@@ -4,8 +4,6 @@ import logo from './images/logo.jpeg';
 import logo2 from './images/logo-footer.png';
 import twitter from './images/twitter.png';
 import facebook from './images/facebook.png';
-import ActuaProperty from './actualProperty';
-import {Modal} from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
@@ -13,8 +11,6 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 export default function Properties(){
 
     const [property, setProperty] = useState([]);
-    const [open, setOpen] = useState(false);
-    const [id, setId] = useState(null);
 
     useEffect(() => {
         try{
@@ -60,16 +56,13 @@ export default function Properties(){
                     <h1>Affordable Plots for Sale</h1>
                     {property.map(plot =>
                     <>
-                        <div className="available" key={plot.id} onClick={() => {
-                            setOpen(true)
-                            setId(plot.id)
-                        }}>
+                    <Link to={`/property/${plot.id}`} style={{textDecoration: 'none'}}><div className="available" key={plot.id}>
                             <div className="property-img">
                                 <img src={plot.thumbnail} alt="property-img" />
                             </div>
                             <div className="property-content">
                                 <h2>{plot.location}</h2>
-                                <p>{plot.description}</p>
+                                <p>{plot.description.substring(0, 100)}...</p>
                                 <ul>
                                     <li style={{borderRight: '1px solid #868686', paddingRight: '120px'}}>
                                         <h3>{plot.size}</h3>
@@ -82,11 +75,7 @@ export default function Properties(){
                                 </ul>
                                 <p>Installment payment option upto 12 months</p>
                             </div>
-                        </div>
-
-                        <Modal open={open} onClose={() => setOpen(false)}>
-                            <ActuaProperty pk={id} />
-                        </Modal>
+                        </div></Link>
                     </>
                     )}
                 </div>

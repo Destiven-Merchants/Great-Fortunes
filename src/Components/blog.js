@@ -56,8 +56,8 @@ export default function Blog() {
                                 <img src={post.thumbnail} alt="blog" />
                                 <Link to={`/blogpost/${post.slug}`} style={{textDecoration: 'none'}}><div className="blog-content">
                                     <h3>{post.title}</h3>
-                                    <h5>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h5>
-                                    <h4>Learn More</h4>
+                                    <h5 dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150)}} style={{color: '#111', fontWeight: '400', fontSize: '1rem'}}/>
+                                    <h4>Learn more</h4>
                                 </div></Link>
                             </div>
                         )}

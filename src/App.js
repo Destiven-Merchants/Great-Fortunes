@@ -6,6 +6,7 @@ import Contact from './Components/contact';
 import Blog from './Components/blog';
 import About from './Components/about';
 import ActualBlog from './Components/actualBlog';
+import ActualProperty from './Components/actualProperty';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/properties" element={<Properties />} />
         <Route exact path="/blogpost/:slug" element={<ActualBlog />} />
+        <Route exact path="/property/:id" element={<ActualProperty />} />
       </Routes>
     </Router>
   );

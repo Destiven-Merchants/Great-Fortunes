@@ -143,7 +143,7 @@ body{
 }
 
 .cta-container{
-  margin: 100px 60px;
+  margin: 100px 0;
 }
 
 .cta-container h1{
@@ -154,7 +154,7 @@ body{
   display: flex;
   background-color: #25D366;
   justify-content: center;
-  margin: 40px 80px;
+  padding: 40px 0;
 }
 
 .cta-container ul li{
@@ -298,6 +298,7 @@ body{
   list-style: none;
   padding: 0 10px;
   text-align: center;
+  color: #1d1d1d;
 }
 
 .properties-container .available .property-content ul li h3{
@@ -316,8 +317,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px 150px;
-  border-radius: 20px;
+
 }
 
 .actualproperty{
@@ -326,6 +326,7 @@ body{
 }
 
 .actualproperty-content{
+  width: 500px;
   padding-left: 100px;
 }
 
@@ -338,13 +339,13 @@ body{
 }
 
 .actualproperty-img img{
-  width: 300px;
+  width: 400px;
   border-radius: 5px;
 }
 
 .actualproperty-content ul{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .actualproperty-content ul li{
@@ -515,7 +516,7 @@ body{
   font-size: 1rem;
   text-decoration: underline;
   font-weight: 400;
-  padding-top: 5px;
+  color: #1d1d1d;
 }
 
 .blog .blog-content h4:hover{
@@ -575,4 +576,73 @@ body{
   color: #555;
   font-size: 1.1rem;
   font-weight: 500;
+}
+
+/* About section */
+
+.about-section-container{
+  padding: 30px 0;
+  background-color: #F9F9F9;
+}
+
+.about-section-container .about-section{
+  padding: 0 80px;
+}
+
+.about-section-container .about-section h1{
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1d1d1d;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.company-director{
+  padding-bottom: 30px;
+}
+
+.company-director p, .company-ceo p{
+  color: #111;
+  font-weight: 400;
+}
+
+.company-director h2{
+  color: #1B1A1A;
+  font-size: 1.5rem;
+}
+
+.mission-vision{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mission{
+  width: 600px;
+}
+
+.vision{
+  padding-top: 20px;
+}
+
+.values{
+  padding-top: 20px;
+}
+
+.values ul{
+  display: flex;
+  justify-content: space-between;
+}
+
+.values ul li{
+  list-style: none;
+  width: 500px;
+}
+
+.values ul li h3{
+  font-size: 1rem;
+}
+
+.values ul li p, .vision p, .mission p{
+  color: #888;
+  font-weight: 700;
 }
