@@ -12,6 +12,17 @@ export default function Contact() {
 
     const [open, setOpen] = useState(false);
 
+    const [message, setMessage] = useState({
+        name: '',
+        email: '',
+        text: ''
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(message)
+    }
+
     return (
         <div className="container">
             <header>
@@ -52,14 +63,29 @@ export default function Contact() {
 
             <section onClick={() => setOpen(false)}>
                 <div className='contact' id='contact'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h1>Get In Touch</h1>
                     <div className='contact-first'>
-                        <input type='text' placeholder='Name' required />
-                        <input type='email' placeholder='Your Email' required />
+                        <input type='text' placeholder='Name' required 
+                            value={message.name}
+                            onChange={(e) => setMessage(prev => ({
+                                ...prev, name: e.target.value
+                            }))}
+                        />
+                        <input type='email' placeholder='Your Email' required 
+                            value={message.email}
+                            onChange={(e) => setMessage(prev => ({
+                                ...prev, email: e.target.value
+                            }))}
+                        />
                     </div>
                     <div className='message'>
-                        <textarea placeholder='Your Message' required></textarea>
+                        <textarea placeholder='Your Message' required
+                            value={message.text}
+                            onChange={(e) => setMessage(prev => ({
+                                ...prev, text: e.target.value
+                            }))}
+                        ></textarea>
                     </div>
                     <input type='submit' value='SEND' />
                 </form>
