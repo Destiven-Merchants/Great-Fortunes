@@ -12,7 +12,8 @@ export default function ActualProperty() {
 
     const [actualProperty, setActualProperty] = useState([]);
     const [images, setImages] = useState([]);
-    const [curImage, setCurImage] = useState('')
+    const [curImage, setCurImage] = useState('');
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const url = window.location.pathname
@@ -59,6 +60,14 @@ export default function ActualProperty() {
                             <EmailOutlinedIcon />
                             <h2 style={{paddingLeft: '10px'}}>info@greatfortunesproperties.com</h2>
                         </div>
+                        <div className="social-links">
+                            <ul>
+                                <li>
+                                    <a href="https://twitter.com/greatfortunes1"><img src={twitter} alt="twitter" /></a>
+                                    <a href="https://www.facebook.com/profile.php?id=100086559135760"><img src={facebook} alt="facebook" /></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div className="navigation">
                         <Link to="/"><img src={logo} alt="logo" /></Link>
@@ -66,13 +75,21 @@ export default function ActualProperty() {
                             <Link to="/" style={{textDecoration: 'none', color: '#111'}}><li>Home</li></Link>
                             <Link to="/properties" style={{textDecoration: 'none', color: '#111'}}><li>Properties</li></Link>
                             <Link to="/blog" style={{textDecoration: 'none', color: '#111'}}><li>Blog</li></Link>
-                            <Link to="/about" style={{textDecoration: 'none', color: '#111'}}><li>About</li></Link>
+                            <Link to="/about" style={{textDecoration: 'none', color: '#111'}} onMouseOver={() => setOpen(!open)}><li>About</li></Link>
                             <Link to="/contact" style={{textDecoration: 'none', color: '#111'}}><li>Contact Us</li></Link>
+                        </ul>
+                    </div>
+
+                    <div className="modal" style={{display: open ? 'block' : 'none'}}>
+                        <ul>
+                            <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
+                            <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
+                            <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
                         </ul>
                     </div>
                 </header>
             </div>
-            <div className="actualproperty-container">
+            <div className="actualproperty-container" onClick={() => setOpen(false)}>
 
                 {actualProperty.map(property => 
                     <div className="actualproperty" key={property.id}>

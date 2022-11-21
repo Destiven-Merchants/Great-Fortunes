@@ -1,34 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import logo from './images/logo.jpeg';
 import logo2 from './images/logo-footer.png';
-import twitter from './images/twitter.png';
-import facebook from './images/facebook.png';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import twitter from './images/twitter.png';
+import facebook from './images/facebook.png';
 
-export default function Properties(){
-
-    const [property, setProperty] = useState([]);
+export default function Mission(){
     const [open, setOpen] = useState(false);
-
-    useEffect(() => {
-        try{
-            fetch('https://greatfortunesproperties.herokuapp.com/property',{
-                method: 'GET',
-                headers: {'Content-Type': 'application/json'}
-            }).then(
-                res => res.json()
-            ).then((json) => {
-                setProperty(json)
-            }).catch(err => console.log(err))
-        }catch(error){
-            alert('error')
-        }
-    }, [])
-
-    // console.log(images)
 
     return (
         <div className="container">
@@ -60,41 +41,30 @@ export default function Properties(){
                 </div>
 
                 <div className="modal" style={{display: open ? 'block' : 'none'}}>
-                        <ul>
-                            <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
-                            <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
-                            <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
-                        </ul>
-                    </div>
+                    <ul>
+                        <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
+                        <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
+                        <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
+                    </ul>
+                </div>
             </header>
 
             <section onClick={() => setOpen(false)}>
-                <div className="properties-container">
-                    <h1>Affordable Plots for Sale</h1>
-                    {property.map(plot =>
-                    <>
-                    <Link to={`/property/${plot.id}`} style={{textDecoration: 'none'}}><div className="available" key={plot.id}>
-                            <div className="property-img">
-                                <img src={plot.thumbnail} alt="property-img" />
+                <div className="about-section-container">
+                    <div className="about-section">
+                        <h1>Mission & Vision</h1>
+                        <div className="mission-vision">
+                            <div className="mission">
+                                <h2>Our Mission</h2>
+                                <p>Leveraging creativity and innovation to provide timely investments opportunities that empower out clients socially and economically.</p>
                             </div>
-                            <div className="property-content">
-                                <h2>{plot.location}</h2>
-                                <p>{plot.description.substring(0, 100)}...</p>
-                                <ul>
-                                    <li style={{borderRight: '1px solid #868686', paddingRight: '120px'}}>
-                                        <h3>{plot.size}</h3>
-                                        <h4>{plot.price}</h4>
-                                    </li>
-                                    <li>
-                                        <h3>Booking fee:</h3>
-                                        <h4>{plot.discount}</h4>
-                                    </li>
-                                </ul>
-                                <p>Installment payment option upto 12 months</p>
+
+                            <div className="vision">
+                                <h2>Our Vision</h2>
+                                <p>To be the champion provider of affordable housing in Africa.</p>
                             </div>
-                        </div></Link>
-                    </>
-                    )}
+                        </div>
+                    </div>
                 </div>
 
                 <div className="footer-container">
@@ -139,7 +109,6 @@ export default function Properties(){
                     </div>
                     
                 </div>
-                
             </section>
         </div>
     )

@@ -11,6 +11,7 @@ import facebook from './images/facebook.png';
 export default function ActualBlog(){
 
     const [post, setPost] = useState([]);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const url = window.location.pathname
@@ -45,8 +46,16 @@ export default function ActualBlog(){
                         <Link to="/" style={{textDecoration: 'none', color: '#111'}}><li>Home</li></Link>
                         <Link to="/properties" style={{textDecoration: 'none', color: '#111'}}><li>Properties</li></Link>
                         <Link to="/blog" style={{textDecoration: 'none', color: '#111'}}><li>Blog</li></Link>
-                        <Link to="/about" style={{textDecoration: 'none', color: '#111'}}><li>About</li></Link>
+                        <Link to="/about" style={{textDecoration: 'none', color: '#111'}} onMouseOver={() => setOpen(!open)}><li>About</li></Link>
                         <Link to="/contact" style={{textDecoration: 'none', color: '#111'}}><li>Contact Us</li></Link>
+                    </ul>
+                </div>
+
+                <div className="modal" style={{display: open ? 'block' : 'none'}}>
+                    <ul>
+                        <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
+                        <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
+                        <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
                     </ul>
                 </div>
             </header>
@@ -63,7 +72,7 @@ export default function ActualBlog(){
                 )}
             </div>
 
-            <section>
+            <section onClick={() => setOpen(false)}>
             <div className="footer-container">
                     <div className="footer-content">
                         <div className="footer-top">
@@ -71,6 +80,14 @@ export default function ActualBlog(){
                             <div className="footer-about">
                                 <h2>Who we are:</h2>
                                 <p>Great Fortunes Properties is a leading brand in the African real estate sector. The Group’s main objective is to empower property investors and transform the Society.</p>
+                            </div>
+                            <div className="social-links">
+                                <ul>
+                                    <li>
+                                        <a href="https://twitter.com/greatfortunes1"><img src={twitter} alt="twitter" /></a>
+                                        <a href="https://www.facebook.com/profile.php?id=100086559135760"><img src={facebook} alt="facebook" /></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 

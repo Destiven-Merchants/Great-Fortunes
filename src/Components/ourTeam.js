@@ -1,36 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import logo from './images/logo.jpeg';
 import logo2 from './images/logo-footer.png';
-import twitter from './images/twitter.png';
-import facebook from './images/facebook.png';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import twitter from './images/twitter.png';
+import facebook from './images/facebook.png';
 
-export default function Properties(){
-
-    const [property, setProperty] = useState([]);
+export default function OurTeam(){
     const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-        try{
-            fetch('https://greatfortunesproperties.herokuapp.com/property',{
-                method: 'GET',
-                headers: {'Content-Type': 'application/json'}
-            }).then(
-                res => res.json()
-            ).then((json) => {
-                setProperty(json)
-            }).catch(err => console.log(err))
-        }catch(error){
-            alert('error')
-        }
-    }, [])
-
-    // console.log(images)
-
-    return (
+    return(
         <div className="container">
             <header>
                 <div className="head">
@@ -60,41 +41,30 @@ export default function Properties(){
                 </div>
 
                 <div className="modal" style={{display: open ? 'block' : 'none'}}>
-                        <ul>
-                            <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
-                            <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
-                            <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
-                        </ul>
-                    </div>
+                    <ul>
+                        <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
+                        <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
+                        <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
+                    </ul>
+                </div>
             </header>
 
             <section onClick={() => setOpen(false)}>
-                <div className="properties-container">
-                    <h1>Affordable Plots for Sale</h1>
-                    {property.map(plot =>
-                    <>
-                    <Link to={`/property/${plot.id}`} style={{textDecoration: 'none'}}><div className="available" key={plot.id}>
-                            <div className="property-img">
-                                <img src={plot.thumbnail} alt="property-img" />
+                <div className="about-section-container">
+                    <div className="about-section">
+                        <h1>Our Team</h1>
+                        <div className="company">
+                            <div className="company-ceo">
+                                <h2>CEO</h2>
+                                <p>Benson Mutuike is a holder of Bachelor of Economics degree from Kenyatta University. He has worked at various capacities: as a researcher and data analyst at Equity Group Foundation and as an accountant at the Ministry of Devolution and planning and as a marketer selling real estate properties. He has a great passion in real estate and aspires to use his vast knowledge in real estate investments to help as many clients as possible have a stake in the real estate sector.</p>
                             </div>
-                            <div className="property-content">
-                                <h2>{plot.location}</h2>
-                                <p>{plot.description.substring(0, 100)}...</p>
-                                <ul>
-                                    <li style={{borderRight: '1px solid #868686', paddingRight: '120px'}}>
-                                        <h3>{plot.size}</h3>
-                                        <h4>{plot.price}</h4>
-                                    </li>
-                                    <li>
-                                        <h3>Booking fee:</h3>
-                                        <h4>{plot.discount}</h4>
-                                    </li>
-                                </ul>
-                                <p>Installment payment option upto 12 months</p>
+
+                            <div className="company-director">
+                                <h2>Director</h2>
+                                <p>Kelvin Kahiga is a holder of B.A Economics from Maasai Mara University. He has worked at various capacities at Unaitas Sacco as a relationship officer and as an accountant at the Ministry of Devolution and Planning, he’s also an investment consultant. He has a strong believe that if innovation and creativity is leveraged in the Kenyan real estate, everybody in Kenya can own a home.</p>
                             </div>
-                        </div></Link>
-                    </>
-                    )}
+                        </div>
+                    </div>
                 </div>
 
                 <div className="footer-container">
@@ -139,7 +109,6 @@ export default function Properties(){
                     </div>
                     
                 </div>
-                
             </section>
         </div>
     )
