@@ -1,15 +1,20 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
-import logo from './images/logo.jpeg';
-import logo2 from './images/logo-footer.png';
+import header from './images/header.jpeg';
+import footer from './images/footer.png';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import twitter from './images/twitter.png';
 import facebook from './images/facebook.png';
+import twitter1 from './images/twitter1.png';
+import facebook1 from './images/facebook1.png';
 
 export default function Mission(){
     const [open, setOpen] = useState(false);
+    const [open1, setOpen1] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <div className="container">
@@ -23,30 +28,46 @@ export default function Mission(){
                     <div className="social-links">
                         <ul>
                             <li>
-                                <a href="https://twitter.com/greatfortunes1"><img src={twitter} alt="twitter" /></a>
-                                <a href="https://www.facebook.com/profile.php?id=100086559135760"><img src={facebook} alt="facebook" /></a>
+                                <a href="https://twitter.com/greatfortunes1"><img src={twitter1} alt="twitter" /></a>
+                                <a href="https://www.facebook.com/profile.php?id=100086559135760"><img src={facebook1} alt="facebook" /></a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div className="navigation">
-                    <Link to="/"><img src={logo} alt="logo" /></Link>
+                <div className={isExpanded ? "navigation expanded" : "navigation"}>
+                    <Link to="/"><img src={header} alt="logo" /></Link>
                     <ul>
                         <Link to="/" style={{textDecoration: 'none', color: '#111'}}><li>Home</li></Link>
                         <Link to="/properties" style={{textDecoration: 'none', color: '#111'}}><li>Properties</li></Link>
                         <Link to="/blog" style={{textDecoration: 'none', color: '#111'}}><li>Blog</li></Link>
-                        <Link to="/about" style={{textDecoration: 'none', color: '#111'}} onMouseOver={() => setOpen(!open)}><li>About</li></Link>
+                        <li onMouseOver={() => setOpen(!open)} onClick={() => setOpen1(!open1)} style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>About <span style={{paddingLeft: '10px'}}><ExpandMoreIcon /></span></li>
+                        <div className="mini-links" style={{display: open1 ? 'block' : 'none'}}>
+                        <ol>
+                            <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
+                            <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
+                            <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
+                        </ol>
+                        </div>
                         <Link to="/contact" style={{textDecoration: 'none', color: '#111'}}><li>Contact Us</li></Link>
+                        <div className="crop"></div>
                     </ul>
+                <div className="hamburger">
+                        <div className="hamburg-menu" onClick={() => setIsExpanded(!isExpanded)}>
+                            <span className="h-top"></span>
+                            <span className="h-middle"></span>
+                            <span className="h-bottom"></span>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="modal" style={{display: open ? 'block' : 'none'}}>
+                <div className={isExpanded ? "modal1" : "modal"} style={{display: open ? 'block' : 'none'}}>
                     <ul>
                         <Link to="/our-team" style={{textDecoration: 'none', color: '#111'}}><li>Our Team</li></Link>
                         <Link to="/mission-vision" style={{textDecoration: 'none', color: '#111'}}><li>Mission & Vision</li></Link>
                         <Link to="/core-values" style={{textDecoration: 'none', color: '#111'}}><li>Core Values</li></Link>
                     </ul>
                 </div>
+
             </header>
 
             <section onClick={() => setOpen(false)}>
@@ -70,7 +91,7 @@ export default function Mission(){
                 <div className="footer-container">
                     <div className="footer-content">
                         <div className="footer-top">
-                            <img src={logo2} alt='logo' />
+                            <img src={footer} alt='logo' />
                             <div className="footer-about">
                                 <h2>Who we are:</h2>
                                 <p>Great Fortunes Properties is a leading brand in the African real estate sector. The Group’s main objective is to empower property investors and transform the Society.</p>
