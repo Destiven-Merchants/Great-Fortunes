@@ -1,24 +1,40 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import twitter from './images/twitter.png';
-import facebook from './images/facebook.png';
-import property1 from './images/property1.jpg';
-import property2 from './images/property2.jpg';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CountUp from 'react-countup';
 import twitter1 from './images/twitter1.png';
 import facebook1 from './images/facebook1.png';
 import header from './images/header.jpeg';
-import footer from './images/footer.png';
+import whatsapp from './images/whatsapp.png';
+import Footer from './footer';
+import Hero from './images/hero.jpg';
 
 export default function Home(){
 
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    const handleScroll = () => {
+        const offset = window.scrollY;
+        if(offset > 200){
+            setScrolled(true)
+        }else{
+            setScrolled(false)
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+    });
+
+    let navbarClasses = ['navi']
+
+    if(scrolled){
+        navbarClasses.push('scrolled')
+    };
 
     return (
         <div className="container">
@@ -38,6 +54,7 @@ export default function Home(){
                         </ul>
                     </div>
                 </div>
+                <div className={navbarClasses.join(" ")}>
                 <div className={isExpanded ? "navigation expanded" : "navigation"}>
                     <Link to="/"><img src={header} alt="logo" /></Link>
                     <ul>
@@ -62,6 +79,14 @@ export default function Home(){
                         </div>
                     </div>
                 </div>
+                </div>
+
+                <a href="https://wa.me/254707117203">
+                    <div className="i">
+                    <img src={whatsapp} alt="whatsapp" />
+                    <h5>Whatsapp us</h5>
+                    </div>
+                </a>
 
                     <div className="modal" style={{display: open ? 'block' : 'none'}}>
                         <ul>
@@ -76,23 +101,8 @@ export default function Home(){
             <section onClick={() => setOpen(false)}>
                 <div className="hero-container">
                     <h1>Start Your Investment Journey with Us.</h1>
-                    <h2>Featured properties</h2>
-                    <div className="properties">
-                        <div className="property">
-                            <img src={property1} alt="property1" />
-                            <h5>Plots in Nanyuki</h5>
-                        </div>
-                        <div className="property">
-                            <img src={property2} alt="property2" />
-                            <h5>Plots in Kiambu</h5>
-                        </div>
-                        <div className="property property-hide">
-                            <img src={property1} alt="property3" />
-                            <h5>Plots in Nakuru</h5>
-                        </div>
-                    </div>
                     <div className="explore">
-                        <Link to="/properties"><button>Explore more</button></Link>
+                        <Link to="/properties"><button>Explore properties</button></Link>
                     </div>
                 </div>
 
@@ -100,17 +110,22 @@ export default function Home(){
                     <div className="about-content">
                         <h1>Why Invest with Great Fortunes Properties?</h1>
                         <ol>
-                            <li>Over 10 years of experience. Great Fortunes Properties is a leading brand in the African real estate sector.</li>
-                            <li>Genuine Titles Deeds. We have prime plots on sale in Kiambu, Thika, Gatanga Road, Machakos, Kitengela, Nyeri.</li>
-                            <li>Property Transformation. The Real Estate arm’s flagship product is transformed value added plots which are particularly enhanced to suit immediate residential settlement, commercial purposes and futuristic.</li>
-                            <li>Our prices are very affordable starting from Kshs. 199,000 only.</li>
-                            <li>Our prices are inclusive of title processing fees and legal fees, no hidden charges.</li>
-                            <li>Title deed delivery – we do all the paperwork for you and deliver title deeds within 6 – 12 months upon completion of payment.</li>
-                            <li>We offer a flexible installment payment plan of up to 12 months.</li>
+                            <li>
+                                <h3>Genuine Title deeds.</h3>
+                                <p>To ensure credibility and satisfaction to our customers, Great fortunes conduct maximum due diligence before investing in any project. Investing in Great Fortunes, you’re assured of clean and legitimate title deeds.</p>
+                            </li>
+                            <li>
+                                <h3>Properties value addition.</h3>
+                                <p>In Great Fortunes, we believe in providing our clients with ready to settle properties. We do this by ensuring that all our properties have all the required utilities-water, electricity, access roads and they’re well fenced.</p>
+                            </li>
+                            <li>
+                                <h3>Customer obsession.</h3>
+                                <p>One of our core values is customer obsession. Great Fortunes believes in genuinely listening to our customer’s needs and providing tailored solutions which meets their needs.</p>
+                            </li>
                         </ol>
                     </div>
                     <div className="about-img">
-                        <img src={property1} alt='property' />
+                        <img src={Hero} alt='property' />
                     </div>
                 </div>
 
@@ -126,58 +141,30 @@ export default function Home(){
                             <p>Projects</p>
                         </li>
                         <li>
-                            <h4><CountUp end={10000} duration={3} delay={3}/></h4>
+                            <h4><CountUp end={9} duration={3} delay={3}/></h4>
                             <p>Happy CLients</p>
                         </li>
                         <li>
-                            <h4><CountUp end={1000} duration={3} delay={3}/></h4>
+                            <h4><CountUp end={9} duration={3} delay={3}/></h4>
                             <p>Title Deeds Awarded</p>
                         </li>
                     </ul>
                 </div>
 
-                <div className="footer-container">
-                    <div className="footer-content">
-                        <div className="footer-top">
-                            <img src={footer} alt='logo' />
-                            <div className="footer-about">
-                                <h2>Who we are:</h2>
-                                <p>Great Fortunes Properties is a leading brand in the African real estate sector. The Group’s main objective is to empower property investors and transform the Society.</p>
-                            </div>
+                <div className='contact1' id='contact1'>
+                    <form>
+                        <h1>Get In Touch</h1>
+                        <div className='contact-first'>
+                            <input type='text' placeholder='Name' required />
+                            <input type='text' placeholder='Your Phone No.' required />
                         </div>
-
-                        <div className="footer-centre">
-                            <h1>Contact Information:</h1>
-                            <ul>
-                                <li>
-                                    <LocalPhoneOutlinedIcon />
-                                    <h5 style={{paddingLeft: '10px'}}>+254 (707) 117 203</h5>
-                                </li>
-                                <li>
-                                    <EmailOutlinedIcon />
-                                    <h5 style={{paddingLeft: '10px'}}>info@greatfortunesproperties.com</h5>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/greatfortunes1"><img src={twitter} alt="twitter" /></a>
-                                    <a href="https://www.facebook.com/profile.php?id=100086559135760"><img src={facebook} alt="facebook" /></a>
-                                </li>
-                            </ul>
+                        <div className='message'>
+                            <textarea placeholder='Your Message' required></textarea>
                         </div>
-
-                        <div className="footer-bottom">
-                            <h1>Office Location:</h1>
-                            <ul>
-                                <li><LocationOnOutlinedIcon /></li>
-                                <li style={{paddingLeft: '10px'}}>Assumption Center CDN 4th Floor, along Moi road</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="copyright">
-                        <h3>2022 © Great Fortunes Properties</h3>
-                    </div>
-                    
+                        <input type='submit' value='SEND' />
+                    </form>
                 </div>
+                <Footer />
             </section>
         </div>
     )
